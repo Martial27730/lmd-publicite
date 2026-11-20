@@ -1,0 +1,39 @@
+
+{
+  "accroche": "Communication visuelle · Bueil, Eure",
+  "titre": "Votre image.",
+  "soustitre": "Notre savoir-faire.",
+  "description": "Enseignes, marquage de véhicules et publicité sur tous supports. De la création graphique à la pose.",
+  "image": "https://lmd27730.e-monsite.com/medias/album/img-20180606-194946.jpg?v=1",
+  "image_alt": "Enseigne du musée du cinéma de Bueil",
+  "bouton": "Parlons de votre projet ›",
+  "prestations_titre": "Des solutions pour être visible.",
+  "prestations": {
+    "enseignes": {
+      "titre": "Enseignes & totems",
+      "description": "Enseignes lumineuses, lettres découpées et signalétique extérieure."
+    },
+    "vehicules": {
+      "titre": "Marquage de véhicules",
+      "description": "Lettrage adhésif et décoration de véhicules professionnels."
+    },
+    "signaletique": {
+      "titre": "Signalétique & adhésifs",
+      "description": "Panneaux, vitrophanie et communication sur mesure."
+    },
+    "textiles": {
+      "titre": "Textiles",
+      "description": "Personnalisation de vêtements et supports textiles."
+    },
+    "imprimerie": {
+      "titre": "Imprimerie",
+      "description": "Cartes de visite, flyers et supports imprimés."
+    },
+    "objets": {
+      "titre": "Objets publicitaires",
+      "description": "Des supports adaptés à votre identité visuelle."
+    }
+  },
+  "realisations_titre": "Nos réalisations.",
+  "contact_titre": "Contactez-nous."
+}
