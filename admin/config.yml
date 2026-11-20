@@ -1,14 +1,83 @@
+
 backend:
   name: github
   repo: Martial27730/lmd-publicite
   branch: main
   base_url: https://lmd-publicite-web.pages.dev
   auth_endpoint: api/auth
+
 locale: fr
 media_folder: images/realisations
 public_folder: /images/realisations
 site_url: https://lmd-publicite-web.pages.dev
+
 collections:
+  - name: accueil
+    label: Page d'accueil
+    files:
+      - name: accueil
+        label: Contenu de la page d'accueil
+        file: contenu/accueil.json
+        format: json
+        fields:
+          - {label: Accroche, name: accroche, widget: string}
+          - {label: Titre principal, name: titre, widget: string}
+          - {label: Sous-titre, name: soustitre, widget: string}
+          - {label: Description, name: description, widget: text}
+          - {label: Image principale, name: image, widget: image, choose_url: true}
+          - {label: Description de l'image, name: image_alt, widget: string}
+          - {label: Texte du bouton, name: bouton, widget: string}
+          - {label: Titre des prestations, name: prestations_titre, widget: string}
+
+          - label: Prestations
+            name: prestations
+            widget: object
+            fields:
+              - label: Enseignes et totems
+                name: enseignes
+                widget: object
+                fields:
+                  - {label: Titre, name: titre, widget: string}
+                  - {label: Description, name: description, widget: text}
+
+              - label: Marquage de véhicules
+                name: vehicules
+                widget: object
+                fields:
+                  - {label: Titre, name: titre, widget: string}
+                  - {label: Description, name: description, widget: text}
+
+              - label: Signalétique et adhésifs
+                name: signaletique
+                widget: object
+                fields:
+                  - {label: Titre, name: titre, widget: string}
+                  - {label: Description, name: description, widget: text}
+
+              - label: Textiles
+                name: textiles
+                widget: object
+                fields:
+                  - {label: Titre, name: titre, widget: string}
+                  - {label: Description, name: description, widget: text}
+
+              - label: Imprimerie
+                name: imprimerie
+                widget: object
+                fields:
+                  - {label: Titre, name: titre, widget: string}
+                  - {label: Description, name: description, widget: text}
+
+              - label: Objets publicitaires
+                name: objets
+                widget: object
+                fields:
+                  - {label: Titre, name: titre, widget: string}
+                  - {label: Description, name: description, widget: text}
+
+          - {label: Titre des réalisations, name: realisations_titre, widget: string}
+          - {label: Titre du contact, name: contact_titre, widget: string}
+
   - name: portfolio
     label: Réalisations
     files:
