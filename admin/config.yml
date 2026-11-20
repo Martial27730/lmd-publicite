@@ -1,0 +1,35 @@
+backend:
+  name: github
+  repo: Martial27730/lmd-publicite
+  branch: main
+  base_url: https://lmd-publicite-web.pages.dev
+  auth_endpoint: api/auth
+locale: fr
+media_folder: images/realisations
+public_folder: /images/realisations
+site_url: https://lmd-publicite-web.pages.dev
+collections:
+  - name: portfolio
+    label: Réalisations
+    files:
+      - name: galerie
+        label: Galerie photos
+        file: contenu/galerie.json
+        format: json
+        fields:
+          - label: Photographies
+            name: photos
+            widget: list
+            fields:
+              - {label: Titre, name: title, widget: string}
+              - {label: Photo, name: image, widget: image, choose_url: true}
+              - label: Activité
+                name: category
+                widget: select
+                options:
+                  - {label: Enseignes et totems, value: enseignes}
+                  - {label: Marquage de véhicules, value: vehicules}
+                  - {label: Signalétique et adhésifs, value: signaletique}
+                  - {label: Textiles, value: textiles}
+                  - {label: Imprimerie, value: imprimerie}
+                  - {label: Objets publicitaires, value: objets}
