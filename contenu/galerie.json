@@ -20,7 +20,8 @@
     {
       "title": "Réalisation - Test",
       "image": "/images/realisations/img_20261029_152922.jpg",
-      "category": "vehicules"
+      "category": "vehicules",
+      "additional_images": []
     },
     {
       "image": "/images/realisations/calendriers.jpg",
@@ -45,7 +46,6 @@
         "https://scontent-cdg4-3.xx.fbcdn.net/v/t39.30808-6/887421166_1755802196548995_8491935268989846060_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=M7MAdZ_Avv4Q7kNvwHjLVyf&_nc_oc=AdqBftjWwCjqVa0cPSRfZwgy1l0b4ZAK01GvSMpqg_9dnAx5wBHlve3qXAkGA4oRGoSfNgajxCgkyLxRAf7R-Y-m&_nc_zt=23&_nc_ht=scontent-cdg4-3.xx&_nc_gid=nx_5noVM9KmeZoomDA1MDw&_nc_ss=7b389&oh=00_AQTiYvhiHy32zqFXIcrTlkeGRQdrEvMnkAOPd1aEEyGRuw&oe=6B0CFA99",
         "https://scontent-cdg4-3.xx.fbcdn.net/v/t39.30808-6/886552030_1755807143215167_8667426332920999839_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=aABKy0difYEQ7kNvwEvZpnm&_nc_oc=Adog9wzGZafvfOUs4kJQkKuoPnNV1rC95gCbYPSPE1gvsYGarIFNIcB3BYhpJ8qy2ibhDK35u_MKy-0nGdBIxyeI&_nc_zt=23&_nc_ht=scontent-cdg4-3.xx&_nc_gid=XMb0PuD_BA1h-R-OVfo51Q&_nc_ss=7b389&oh=00_AQTvcsSh-5KulI_npTdM9TPViXEQ7jL5F4L-yhIFgAp-yg&oe=6B0DDBB3"
       ]
-    },
-    {}
+    }
   ]
 }
