@@ -114,12 +114,14 @@ collections:
               - {label: Photo principale, name: image, widget: image, choose_url: true}
               - label: Autres photos du même sujet
                 name: additional_images
-                widget: list
-                min: 0
+                widget: image
                 required: false
-                collapsed: true
-                summary: '{{fields.image}}'
-                field: {label: Photo supplémentaire, name: image, widget: image, choose_url: true}
+                choose_url: true
+                media_library:
+                  allow_multiple: true
+                  config:
+                    multiple: true
+                hint: Sélectionner plusieurs photos en une fois dans la bibliothèque de médias.
               - label: Activité
                 name: category
                 widget: select
