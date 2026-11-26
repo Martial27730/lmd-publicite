@@ -96,7 +96,13 @@ collections:
             widget: list
             fields:
               - {label: Titre, name: title, widget: string}
-              - {label: Photo, name: image, widget: image, choose_url: true}
+              - {label: Photo principale, name: image, widget: image, choose_url: true}
+              - label: Autres photos du même sujet
+                name: additional_images
+                widget: list
+                required: false
+                summary: '{{fields.image}}'
+                field: {label: Photo supplémentaire, name: image, widget: image, choose_url: true}
               - label: Activité
                 name: category
                 widget: select
