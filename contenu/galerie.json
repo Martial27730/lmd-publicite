@@ -1,11 +1,5 @@
 {
   "photos": [
-    {},
-    {
-      "additional_images": [
-        "/images/realisations/img_20261029_152845.jpg"
-      ]
-    },
     {
       "title": "Marquage de véhicule — Fromagerie LUNA",
       "image": "/images/realisations/img_20260701_085742.jpg",
@@ -24,8 +18,8 @@
       "category": "enseignes",
       "additional_images": [
         "/images/realisations/img_20260718_112117.jpg",
-        "/images/realisations/v2-3f1d8900-b977-47c9-a0d8-e3b3cea568ce.webp",
-        "/images/realisations/v2-1c8a2261-797b-4ff8-9a36-194a12ec7c48.webp"
+        null,
+        null
       ]
     },
     {
