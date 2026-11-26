@@ -61,7 +61,7 @@
     prev.hidden = next.hidden = photos.length < 2;
     prev.style.display = next.style.display = photos.length < 2 ? 'none' : 'block';
   };
-  const open = figure => {
+  const open = (figure, photoOffset = 0) => {
     const figures = visibleFigures();
     if (!figures.includes(figure)) return;
     let index = 0;
@@ -74,7 +74,7 @@
     document.body.style.overflow = 'hidden';
     overlay.hidden = false;
     overlay.style.display = 'flex';
-    show(index);
+    show(index + photoOffset);
     close.focus();
   };
   const dismiss = () => {
@@ -102,13 +102,16 @@
   });
   gallery.addEventListener('click', e => {
     const figure = e.target.closest('figure');
-    if (figure && gallery.contains(figure)) open(figure);
+    if (figure && gallery.contains(figure)) {
+      const thumb = e.target.closest('[data-photo-offset]');
+      open(figure, thumb ? Number(thumb.dataset.photoOffset) || 0 : 0);
+    }
   });
   gallery.addEventListener('keydown', e => {
     if (e.key !== 'Enter' && e.key !== ' ') return;
     const figure = e.target.closest('figure');
     const img = figure?.querySelector('img');
-    if (img && gallery.contains(figure)) { e.preventDefault(); open(figure); }
+    if (img && gallery.contains(figure) && (e.target === figure || e.target === img || e.target.tagName === 'FIGCAPTION')) { e.preventDefault(); open(figure); }
   });
   const activateGalleryPhotos = () => {
     gallery.querySelectorAll('figure').forEach(figure => {
@@ -154,10 +157,37 @@
       figure.append(img, cap);
       projectImages.set(figure, [primary, ...extras].map(src => ({ src, title: p.title })));
       if (extras.length) {
-        const label = document.createElement('small');
-        label.textContent = (extras.length + 1) + ' photos · Cliquer pour voir';
-        label.style.cssText = 'display:block;margin-top:6px;font-size:.8em;opacity:.8;';
-        cap.append(label);
+        // Trois miniatures visibles, puis +N si d'autres vues sont disponibles.
+        // Chaque miniature ouvre la photo correspondante dans la visionneuse.
+        const allPhotos = [primary, ...extras];
+        const thumbs = document.createElement('div');
+        thumbs.className = 'lmd-project-thumbnails';
+        thumbs.style.cssText = 'display:flex;gap:7px;margin-top:10px;align-items:stretch;flex-wrap:wrap;';
+        allPhotos.slice(0, 3).forEach((src, index) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.dataset.photoOffset = String(index);
+          button.setAttribute('aria-label', 'Voir la photo ' + (index + 1) + ' de ' + p.title);
+          button.style.cssText = 'position:relative;display:block;width:66px;height:54px;flex:none;border:1px solid rgba(255,255,255,.3);padding:0;overflow:hidden;background:transparent;border-radius:5px;cursor:zoom-in;';
+          const thumbnail = document.createElement('img');
+          thumbnail.src = src;
+          thumbnail.alt = '';
+          thumbnail.loading = 'lazy';
+          thumbnail.style.cssText = 'width:100%;height:100%;display:block;object-fit:cover;';
+          button.append(thumbnail);
+          thumbs.append(button);
+        });
+        const remaining = allPhotos.length - 3;
+        if (remaining > 0) {
+          const more = document.createElement('button');
+          more.type = 'button';
+          more.dataset.photoOffset = '3';
+          more.textContent = '+' + remaining;
+          more.setAttribute('aria-label', 'Voir les ' + remaining + ' autres photos de ' + p.title);
+          more.style.cssText = 'width:66px;height:54px;flex:none;border:1px solid rgba(255,255,255,.3);border-radius:5px;background:rgba(20,20,20,.85);color:white;font:600 18px Arial,sans-serif;cursor:pointer;';
+          thumbs.append(more);
+        }
+        figure.append(thumbs);
       }
       gallery.append(figure);
     }
