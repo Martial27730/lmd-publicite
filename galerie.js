@@ -37,25 +37,38 @@
   let currentIndex = -1;
   let lastFocused = null;
   let oldOverflow = '';
-  const visibleImages = () => Array.from(gallery.querySelectorAll('figure')).filter(
+  // Une carte par réalisation, avec une ou plusieurs photos dans la visionneuse.
+  const projectImages = new WeakMap();
+  const visibleFigures = () => Array.from(gallery.querySelectorAll('figure')).filter(
     figure => figure.getClientRects().length && getComputedStyle(figure).visibility !== 'hidden'
-  ).map(figure => figure.querySelector('img')).filter(Boolean);
+  );
+  const visiblePhotos = () => visibleFigures().flatMap(figure => {
+    const stored = projectImages.get(figure);
+    if (stored?.length) return stored;
+    const img = figure.querySelector('img');
+    if (!img) return [];
+    return [{ src: img.currentSrc || img.src, title: figure.querySelector('figcaption')?.textContent || img.alt || '' }];
+  });
 
-  const show = (index) => {
-    const images = visibleImages();
-    if (!images.length) return;
-    currentIndex = (index + images.length) % images.length;
-    const source = images[currentIndex];
-    enlarged.src = source.currentSrc || source.src;
-    enlarged.alt = source.alt || 'Réalisation LMD Publicité';
-    caption.textContent = source.closest('figure')?.querySelector('figcaption')?.textContent || source.alt || '';
-    prev.hidden = next.hidden = images.length < 2;
-    prev.style.display = next.style.display = images.length < 2 ? 'none' : 'block';
+  const show = index => {
+    const photos = visiblePhotos();
+    if (!photos.length) return;
+    currentIndex = (index + photos.length) % photos.length;
+    const photo = photos[currentIndex];
+    enlarged.src = photo.src;
+    enlarged.alt = photo.title || 'Réalisation LMD Publicité';
+    caption.textContent = (photo.title || 'Réalisation LMD Publicité') + ' — ' + (currentIndex + 1) + ' / ' + photos.length;
+    prev.hidden = next.hidden = photos.length < 2;
+    prev.style.display = next.style.display = photos.length < 2 ? 'none' : 'block';
   };
-  const open = (img) => {
-    const images = visibleImages();
-    const index = images.indexOf(img);
-    if (index < 0) return;
+  const open = figure => {
+    const figures = visibleFigures();
+    if (!figures.includes(figure)) return;
+    let index = 0;
+    for (const item of figures) {
+      if (item === figure) break;
+      index += projectImages.get(item)?.length || (item.querySelector('img') ? 1 : 0);
+    }
     lastFocused = document.activeElement;
     oldOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -88,14 +101,14 @@
     }
   });
   gallery.addEventListener('click', e => {
-    const img = e.target.closest('figure img');
-    if (img && gallery.contains(img)) open(img);
+    const figure = e.target.closest('figure');
+    if (figure && gallery.contains(figure)) open(figure);
   });
   gallery.addEventListener('keydown', e => {
     if (e.key !== 'Enter' && e.key !== ' ') return;
     const figure = e.target.closest('figure');
     const img = figure?.querySelector('img');
-    if (img && gallery.contains(figure)) { e.preventDefault(); open(img); }
+    if (img && gallery.contains(figure)) { e.preventDefault(); open(figure); }
   });
   const activateGalleryPhotos = () => {
     gallery.querySelectorAll('figure').forEach(figure => {
@@ -117,17 +130,35 @@
     if (page === 'index') list = list.slice(0, 6);
     gallery.replaceChildren();
     for (const p of list) {
-      const u = new URL(p.image, location.origin);
-      if (!['http:', 'https:'].includes(u.protocol)) continue;
+      const normalize = value => {
+        const raw = typeof value === 'string' ? value : value?.image;
+        if (typeof raw !== 'string' || !raw.trim()) return null;
+        try {
+          const u = new URL(raw, location.origin);
+          return ['http:', 'https:'].includes(u.protocol) ? u.href : null;
+        } catch (_) { return null; }
+      };
+      const primary = normalize(p.image);
+      if (!primary) continue;
+      const extras = Array.isArray(p.additional_images)
+        ? p.additional_images.map(normalize).filter(Boolean)
+        : [];
       const figure = document.createElement('figure');
       const img = document.createElement('img');
       const cap = document.createElement('figcaption');
       figure.dataset.category = p.category;
-      img.src = u.href;
+      img.src = primary;
       img.alt = p.title;
       img.loading = 'lazy';
       cap.textContent = p.title;
       figure.append(img, cap);
+      projectImages.set(figure, [primary, ...extras].map(src => ({ src, title: p.title })));
+      if (extras.length) {
+        const label = document.createElement('small');
+        label.textContent = (extras.length + 1) + ' photos · Cliquer pour voir';
+        label.style.cssText = 'display:block;margin-top:6px;font-size:.8em;opacity:.8;';
+        cap.append(label);
+      }
       gallery.append(figure);
     }
     activateGalleryPhotos();
