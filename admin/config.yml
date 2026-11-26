@@ -91,30 +91,7 @@ collections:
         file: contenu/galerie.json
         format: json
         fields:
-          - label: Photographies
+          - label: Photothèque
             name: photos
-            widget: list
-            summary: '{{fields.title}}'
-            collapsed: true
-            minimize_collapsed: true
-            add_to_top: true
-            fields:
-              - {label: Titre du sujet, name: title, widget: string}
-              - {label: Photo principale, name: image, widget: image, choose_url: true}
-              - label: Autres photos du même sujet
-                name: additional_images
-                widget: list
-                required: false
-                collapsed: true
-                summary: '{{fields.image}}'
-                field: {label: Photo supplémentaire, name: image, widget: image, choose_url: true}
-              - label: Activité
-                name: category
-                widget: select
-                options:
-                  - {label: Enseignes et totems, value: enseignes}
-                  - {label: Marquage de véhicules, value: vehicules}
-                  - {label: Signalétique et adhésifs, value: signaletique}
-                  - {label: Textiles, value: textiles}
-                  - {label: Imprimerie, value: imprimerie}
-                  - {label: Objets publicitaires, value: objets}
+            widget: lmd_phototheque
+            required: false
