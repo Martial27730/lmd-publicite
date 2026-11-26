@@ -10,6 +10,15 @@ media_folder: images/realisations
 public_folder: /images/realisations
 site_url: https://lmd-publicite-web.pages.dev
 
+media_processing:
+  enabled: true
+  format:
+    enabled: true
+    default: webp
+  quality: 85
+  strip_metadata: true
+  width: 1600
+
 collections:
   - name: accueil
     label: Page d'accueil
