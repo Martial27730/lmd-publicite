@@ -1,5 +1,6 @@
 {
   "photos": [
+    {},
     {
       "additional_images": [
         "/images/realisations/img_20261029_152845.jpg"
@@ -20,7 +21,10 @@
     {
       "title": "Enseigne — Pl'Anet Evasion",
       "image": "/images/realisations/img_20260718_112141.jpg",
-      "category": "enseignes"
+      "category": "enseignes",
+      "additional_images": [
+        "/images/realisations/img_20260718_112117.jpg"
+      ]
     },
     {
       "title": "Réalisation - Test",
