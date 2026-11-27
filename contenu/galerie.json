@@ -22,10 +22,10 @@
     },
     {
       "title": "CS - Paysagiste",
-      "image": "/images/realisations/img_20261029_152922.jpg",
+      "image": "https://scontent-cdg6-1.xx.fbcdn.net/v/t39.30808-6/886633575_1755824326546782_6853280749017476087_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=F939eXwe1g0Q7kNvwEDfc2V&_nc_oc=AdpFR8RT7W1TEdNAdDz8DaaeIqCVCrywG-1_LSpwbkVFA4FhAWKNv8DpDNwy9yCq5QECu-2yyNj-8YNNgr8M20IP&_nc_zt=23&_nc_ht=scontent-cdg6-1.xx&_nc_gid=wS8iz3l56RGgtanmZriZXA&_nc_ss=7b3a8&oh=00_AQRNkesmFCO6t6UaXHAeL0LopddSpeHe5cnRZ0whhkrXRw&oe=6B0E14D8",
       "category": "vehicules",
       "additional_images": [
-        "https://scontent-cdg6-1.xx.fbcdn.net/v/t39.30808-6/886633575_1755824326546782_6853280749017476087_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=F939eXwe1g0Q7kNvwEDfc2V&_nc_oc=AdpFR8RT7W1TEdNAdDz8DaaeIqCVCrywG-1_LSpwbkVFA4FhAWKNv8DpDNwy9yCq5QECu-2yyNj-8YNNgr8M20IP&_nc_zt=23&_nc_ht=scontent-cdg6-1.xx&_nc_gid=wS8iz3l56RGgtanmZriZXA&_nc_ss=7b3a8&oh=00_AQRNkesmFCO6t6UaXHAeL0LopddSpeHe5cnRZ0whhkrXRw&oe=6B0E14D8",
+        "/images/realisations/img_20261029_152922.jpg",
         "/images/realisations/img_20261029_152855.jpg",
         "/images/realisations/img_20261029_152855.jpg"
       ]
