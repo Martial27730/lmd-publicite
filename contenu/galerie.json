@@ -33,9 +33,12 @@
       ]
     },
     {
-      "image": "/images/realisations/calendriers.jpg",
+      "image": "/images/realisations/v2-3edeb86a-3f71-4f9d-a1c3-be583f62b665.webp",
       "category": "imprimerie",
-      "title": "Calendriers"
+      "title": "Calendriers",
+      "additional_images": [
+        "/images/realisations/calendriers.jpg"
+      ]
     },
     {
       "image": "/images/realisations/img_20260912_125733.jpg",
